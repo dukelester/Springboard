@@ -8,7 +8,7 @@ async function getCategoryIds() {
     const idInfo = await axios.get('http://jservice.io/api/categories?count=100');
     let catId = [];
     for (let i = 0; i <= 5; i++) { //get six random id's
-        const index = Math.floor(Math.random() * 100-i); // this will generate a random index to access from the idInfo
+        const index = Math.floor(Math.random() * 100 - i); // this will generate a random index to access from the idInfo
         const item = idInfo.data.at(index); //create item variable based on value returned from index
         if (item.clues_count > 5) {
         idInfo.data.splice(index, 1); // remove that item from the array so it isn't selected twice 
@@ -67,15 +67,15 @@ $gameSpace.on('click', 'td', function handleClick(evt) { //handler to cycle thro
 })
 
 function showLoadingView() { //function to show load circle 
-    if (!document.querySelector('.table')){ //if the table doesn't exist, add the following to the page
-            const img = document.createElement('img') //new image 
+    if (!document.querySelector('.table')) { //if the table doesn't exist, add the following to the page
+            const img = document.createElement('img'); //new image 
             img.classList.add('img');
             img.setAttribute('src', 'jeopardy.gif'); //set image attribute to loading gif
-            $imgHolder.append(img)} //add img to the $imgHolder element to put on page 
+             $imgHolder.append(img) } //add img to the $imgHolder element to put on page 
 }
 
 function hideLoadingView() { //check to remove loading gif 
-    setInterval(()=> { //use a set-interval function to constantly check if the condition below is met, so the gif can be removed whenever the table is generated 
+    setInterval(() => { //use a set-interval function to constantly check if the condition below is met, so the gif can be removed whenever the table is generated 
         if (document.querySelector('.table')) { //check to see if the table exists
             $('img').remove(); //remove the image
         }
